@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import {FormsModule} from '@angular/forms';
 import { HeroDatailComponent } from './hero-datail/hero-datail.component';
+import { HomeComponent } from './home/home.component';
+import { TodoComponent } from './todo/todo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
-    HeroDatailComponent
+    HeroDatailComponent,
+    HomeComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
