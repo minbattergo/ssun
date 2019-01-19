@@ -1,0 +1,20 @@
+.special {
+  color: white;
+  background-color: blue;
+}
+
+li {
+  .bg-light {
+    background-color: #cccccc !important;
+  }
+  &.selected { //li.selected 와 같이 부모를 참조하여라
+    div {
+      &.bg-light {
+        background-color: #666666 !important;
+      }
+      &.text-dark {
+        color: white !important;
+      }
+    }
+  }
+}
