@@ -3,12 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {HeroesComponent} from './heroes/heroes.component';
 import {TodoComponent} from './todo/todo.component';
+import {HeroDetailComponent} from './hero-detail/hero-detail.component';
 
 const routes: Routes = [
-  {path: 'home',   component: HomeComponent},
-  {path: 'heroes', component: HeroesComponent},
-  {path: 'todo',   component: TodoComponent}
-  /** {path: '', redirectTo: HomeComponent} */
+  {path: 'home', component: HomeComponent},
+  {path: 'heroes', component: HeroesComponent, children: [
+      {path: ':hero_id', component: HeroDetailComponent},
+    ]}, // 전체 유알엘: /heroes/11
+  {path: 'todo', component: TodoComponent},
+  /*  {path: '', redirectTo: '/home'}*/
 ];
 
 @NgModule({
