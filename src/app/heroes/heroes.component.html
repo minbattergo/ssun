@@ -3,14 +3,14 @@
 </div>
 
 <p>
-  {{hero.hero_id}}: {{hero.name}}
+  {{hero.id}}: {{hero.name}}
 </p>
 
 <ul>
   <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero"
       class="d-flex m-1"
-      routerLink="/heroes/{{hero.hero_id}}">
-    <span class="rounded-left p-2 bg-primary text-light">{{hero.hero_id}}</span>
+      routerLink="/heroes/{{hero.id}}">
+    <span class="rounded-left p-2 bg-primary text-light">{{hero.id}}</span>
     <div class="rounded-right p-2 bg-light text-dark w-50">{{hero.name}}</div>
   </li>
 </ul>
