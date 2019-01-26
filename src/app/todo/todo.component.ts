@@ -18,6 +18,8 @@ export class TodoComponent implements OnInit {
   todoList: TodoVo[];
   newTodo = new TodoVo();
 
+  tempMap = new Map<number, TodoVo>();
+
   constructor(private heroService: HeroService) { }
 
   ngOnInit() {
@@ -40,6 +42,23 @@ export class TodoComponent implements OnInit {
         // 추가된 데이타 상위로 올리기
         this.todoList.unshift(data);
       });
+  }
+
+  save(item: TodoVo) {
+    item.isEdited = true;
+    // 기존 데이타 저장
+    // const tempTodo = Object.assign({}, item);  // {} => new 와 동일하다고 본다.
+    // const tempTodo = {...item};
+    this.tempMap.set(item.todo_id, {...item});
+  }
+
+  restore(todo: TodoVo) {
+    todo.isEdited = false;
+
+    const tempTodo = this.tempMap.get(todo.todo_id);
+    todo.todo    = tempTodo.todo;
+    todo.created = tempTodo.created;
+    todo.updated = tempTodo.updated;
   }
 
 }

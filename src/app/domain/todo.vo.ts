@@ -4,4 +4,5 @@ export class TodoVo { /** named export , : 다음 자료형이면 typescript, �
   todo: string;
   created: string;
   updated: string;
+  isEdited: boolean;
 }
