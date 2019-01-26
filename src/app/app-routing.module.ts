@@ -4,6 +4,7 @@ import {HomeComponent} from './home/home.component';
 import {HeroesComponent} from './heroes/heroes.component';
 import {TodoComponent} from './todo/todo.component';
 import {HeroDetailComponent} from './hero-detail/hero-detail.component';
+import {JqueryComponent} from './jquery/jquery.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -11,7 +12,8 @@ const routes: Routes = [
       {path: ':hero_id', component: HeroDetailComponent},
     ]}, // 전체 유알엘: /heroes/11
   {path: 'todo', component: TodoComponent},
-  /*  {path: '', redirectTo: '/home'}*/
+  {path: 'jquery', component: JqueryComponent},
+  /* {path: '', redirectTo: '/home'} */
 ];
 
 @NgModule({
