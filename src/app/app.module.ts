@@ -10,6 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { TodoComponent } from './todo/todo.component';
 import {HttpClientModule} from '@angular/common/http';
 import { JqueryComponent } from './jquery/jquery.component';
+import { MydatePipe } from './mydate.pipe';
+import { HighlightDirective } from './highlight.directive';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { JqueryComponent } from './jquery/jquery.component';
     HeroDetailComponent,
     HomeComponent,
     TodoComponent,
-    JqueryComponent
+    JqueryComponent,
+    MydatePipe,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,

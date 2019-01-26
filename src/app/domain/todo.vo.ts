@@ -6,3 +6,8 @@ export class TodoVo { /** named export , : 다음 자료형이면 typescript, �
   updated: string;
   isEdited: boolean;
 }
+
+export class ResultVo {
+  result: number;
+  value: string;
+}
