@@ -6,6 +6,7 @@
   {{hero.hero_id}}: {{hero.name}}
 </p>
 
+<!-- 클래스 바인딩-->
 <ul>
   <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero"
       class="d-flex m-1"

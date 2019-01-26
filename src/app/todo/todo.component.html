@@ -1,3 +1,43 @@
-<p>
-  todo works!
-</p>
+<form #myForm="ngForm" (submit)="addTodo()">
+<div class="row">
+  <div class="col-sm-8">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="할일을 입력하세요."
+             #todo="ngModel" [(ngModel)]="newTodo.todo" name="todo" required>
+      <!-- #todo =>  let todo: ngModel;  todo 변수는 input 노드를 가르킨다. -->
+      <div [hidden]="!todo.touched || todo.valid" class="alert alert-danger">할일은 필수 입니다.</div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <button class="btn btn-primary btn-block" type="submit" [disabled]="!myForm.form.valid">추가</button>
+  </div>
+</div>
+</form>
+
+<!-- Angular : 탬플릿 드리븐 폼 규칙 ; form 감싸면 name 속성이 반드시 있어야 된다.
+     # 붙이면 Angular 변수선언과 동일한다
+     #todo =>  let todo: ngModel; 동일하다. -->
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>완료</th>
+    <th>todo</th>
+    <th>생성일</th>
+    <th>수정일</th>
+    <th>삭제</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let todo of todoList">
+    <td>{{todo.isFinished ? "완료" : "미완료"}}</td>
+    <td [class.todo-finished]="todo.isFinished">{{todo.todo}}</td>
+    <td>{{todo.created}}</td>
+    <td>{{todo.updated}}</td>
+    <td>
+      <button class="btn btn-success btn-sm">수정</button>
+      <button class="btn btn-danger btn-sm ml-1">삭제</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
