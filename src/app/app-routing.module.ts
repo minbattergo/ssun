@@ -14,6 +14,7 @@ const routes: Routes = [
   {path: 'todo', component: TodoComponent},
   {path: 'jquery', component: JqueryComponent},
   /* {path: '', redirectTo: '/home'} */
+  {path: 'admin', loadChildren: './admin/admin.module#AdminModule'},
 ];
 
 @NgModule({

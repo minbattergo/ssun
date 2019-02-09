@@ -12,6 +12,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { JqueryComponent } from './jquery/jquery.component';
 import { MydatePipe } from './mydate.pipe';
 import { HighlightDirective } from './highlight.directive';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HighlightDirective } from './highlight.directive';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgbModule, // bootstrap 컴포넌트를 사용하기 위한 모듈
   ],
   providers: [],
   bootstrap: [AppComponent]

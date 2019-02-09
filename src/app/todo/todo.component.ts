@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TodoVo} from '../domain/todo.vo';
 import {HeroService} from '../hero.service';
+import {PageVo} from '../domain/page.vo';
 
 @Component({
   selector: 'app-todo',
@@ -20,14 +21,33 @@ export class TodoComponent implements OnInit {
 
   tempMap = new Map<number, TodoVo>();
 
+  pageVo = new PageVo(); // default 파라메터가 설정이 되어있어서 생략 가능
+
   constructor(private heroService: HeroService) { }
 
   ngOnInit() {
-    this.heroService.getTodoList()
-      .subscribe(data => {
-        console.log(data);
-        this.todoList = data;
+    this.getTodoList();
+  }
+
+  getTodoList() {
+    /*    this.heroService.getTodoList()
+          .subscribe(data => {
+            console.log(data);
+            this.todoList = data;
+          });*/
+
+    const start_index = (this.pageVo.pageIndex - 1) * this.pageVo.pageSize;
+
+    this.heroService.getPagedTodoList(start_index, this.pageVo.pageSize)
+      .subscribe(body => {
+        this.todoList = body.data;
+        this.pageVo.totalCount = body.total;
       });
+  }
+
+  pageRefresh() {
+    // pageIndex 이미 양방향바인등으로 갱신이 되어있음
+    this.getTodoList();
   }
 
   addTodo() {
