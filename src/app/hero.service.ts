@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {Hero} from './hero';
 import {Observable, of, Subject} from 'rxjs';
-import {delay} from 'rxjs/operators';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../environments/environment';
-import {ResultVo, TodoVo} from './domain/todo.vo';
+import {TodoVo} from './domain/todo.vo';
+import {ResultVo} from './domain/result.vo';
 
 @Injectable({
   providedIn: 'root'

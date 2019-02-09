@@ -6,6 +6,9 @@ import { ManageHeroComponent } from './manage-hero/manage-hero.component';
 import {RouterModule, Routes} from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {AdminService} from './admin.service';
+import {HttpClientModule} from '@angular/common/http';
+import {ToastrModule} from 'ngx-toastr';
 
 const routes: Routes = [
   {path: '', component: IndexComponent, children: [
@@ -21,6 +24,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-  ]
+    HttpClientModule,
+  ],
+  providers: [AdminService]
 })
 export class AdminModule { }

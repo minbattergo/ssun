@@ -1,16 +1,31 @@
 <h3>Hero Registration</h3>
 
-<form [formGroup]="form">
+<IMG
+  SRC="data:image/gif;base64,R0lGODdhMAAwAPAAAAAAAP///ywAAAAAMAAw
+   AAAC8IyPqcvt3wCcDkiLc7C0qwyGHhSWpjQu5yqmCYsapyuvUUlvONmOZtfzgFz
+   ByTB10QgxOR0TqBQejhRNzOfkVJ+5YiUqrXF5Y5lKh/DeuNcP5yLWGsEbtLiOSp
+   a/TPg7JpJHxyendzWTBfX0cxOnKPjgBzi4diinWGdkF8kjdfnycQZXZeYGejmJl
+   ZeGl9i2icVqaNVailT6F5iJ90m6mvuTS4OK05M0vDk0Q4XUtwvKOzrcd3iq9uis
+   F81M1OIcR7lEewwcLp7tuNNkM3uNna3F2JQFo97Vriy/Xl4/f1cf5VWzXyym7PH
+   hhx4dbgYKAAA7"
+  ALT="Larry">
+
+<form [formGroup]="form" (submit)="register()">
 <div class="form-group mt-1">
   <label for="name">Name</label>
   <input type="text" class="form-control" placeholder="Enter Name" id="name"
     formControlName="name">
+  <div *ngIf="form.controls['name'].hasError('required')  && form.controls['name'].touched" class="alert alert-danger">이름을 입력하세요</div>
+  <div *ngIf="form.controls['name'].hasError('minlength')  && form.controls['name'].touched" class="alert alert-danger" >3자이상 입력하세요</div>
+  <div *ngIf="form.controls['name'].hasError('maxlength')  && form.controls['name'].touched" class="alert alert-danger" >10자이하로 입력하세요</div>
 </div>
 
 <div class="form-group mt-1">
   <label for="email">Email Address</label>
   <input type="email" class="form-control" placeholder="Enter Email" id="email"
     formControlName="email">
+  <div *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched" class="alert alert-danger">email을 입력하세요</div>
+  <div *ngIf="form.controls['email'].hasError('email') && form.controls['email'].touched" class="alert alert-danger">email형식 오류</div>
 </div>
 
 <div class="d-flex flex-column mt-1">
@@ -27,6 +42,7 @@
       <label class="form-check-label" for="female">여자</label>
     </div>
   </div>
+  <div *ngIf="form.controls['sex'].hasError('required') && form.controls['sex'].touched" class="alert alert-danger">성별을 선택하세요</div>
 </div>
 
 <div class="form-group mt-1">
@@ -36,6 +52,7 @@
     <option value="American">American</option>
     <option value="Korean">Korean</option>
   </select>
+  <div *ngIf="form.controls['country'].hasError('required') && form.controls['country'].touched" class="alert alert-danger">국가을 선택하세요</div>
 </div>
 
 <div class="form-group mt-1">
@@ -51,6 +68,15 @@
       <label class="form-check-label">{{p}}</label>
     </div>
   </div>
+</div>
+
+
+<div class="d-flex flex-column mt-3">
+    <div>사진등록</div>
+    <div>
+      <input type="file" class="form-control-file border" (change)="fileUpload($event)">
+    </div>
+    <img [src]="form.controls['photo'].value" *ngIf="form.controls['photo'].value">
 </div>
 
 <div class="m-3 d-flex justify-content-center">
