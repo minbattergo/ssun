@@ -8,7 +8,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AdminService} from './admin.service';
 import {HttpClientModule} from '@angular/common/http';
-import {ToastrModule} from 'ngx-toastr';
+import { ManageDialogComponent } from './manage-hero/manage-dialog/manage-dialog.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   {path: '', component: IndexComponent, children: [
@@ -19,13 +20,15 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [IndexComponent, RegisterHeroComponent, ManageHeroComponent, DashboardComponent],
+  declarations: [IndexComponent, RegisterHeroComponent, ManageHeroComponent, DashboardComponent, ManageDialogComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     HttpClientModule,
+    NgbModule,
   ],
-  providers: [AdminService]
+  providers: [AdminService],
+  entryComponents: [ManageDialogComponent]
 })
 export class AdminModule { }
